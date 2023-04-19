@@ -15,7 +15,7 @@ const Banner: FC<BannerProps> = ({ }) => {
             <div className='absolute h-full w-full bg-white opacity-60'></div>
             <div className='absolute h-full w-full text-center flex flex-col justify-center items-center gap-8 lg:gap-16'>
                 <h1 className='text-4xl lg:text-5xl 2xl:text-6xl font-semibold text-black'>Not sure where to go? <br /> Perfect.</h1>
-                <button className='w-fit text-red-500 bg-white px-10 py-4 shadow-md rounded-full hover:shadow-xl active:scale-90 transition'>I'm flexible</button>
+                <button className='w-fit text-red-500 bg-white px-10 py-4 shadow-md rounded-full hover:shadow-xl active:scale-90 transition'>I&apos;m flexible</button>
             </div>
         </div>
     )
