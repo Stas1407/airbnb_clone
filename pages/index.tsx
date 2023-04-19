@@ -8,7 +8,9 @@ import fsPromises from 'fs/promises'
 import path from 'path'
 import SmallCard from '@/components/SmallCard'
 import MediumCard from '@/components/MediumCard'
-import { useEffect } from 'react'
+import React, { ReactNode, useEffect } from 'react'
+import LargeCard from '@/components/LargeCard'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,17 +28,20 @@ interface HomePageProps {
 
 export default function Home({ exploreData, cardsData }: HomePageProps) {
   useEffect(() => {
-    const scrollContainer = document.querySelector("#cards");
+    const scrollContainer = document.querySelector("#cards") as HTMLDivElement;
 
-    scrollContainer?.addEventListener("wheel", (evt: any) => {
+    const onScroll = (evt: WheelEvent) => {
       evt.preventDefault();
       scrollContainer.scroll({
-        left: scrollContainer.scrollLeft+evt.deltaY*(2),
+        left: scrollContainer.scrollLeft + evt.deltaY*6,
         top: 0,
         behavior: "smooth"
       })
-    });
+    };
+
+    scrollContainer.addEventListener("wheel", onScroll);
   }, [])
+
 
   return (
     <div>
@@ -68,7 +73,16 @@ export default function Home({ exploreData, cardsData }: HomePageProps) {
             ))}
           </div>
         </section>
+
+        <LargeCard 
+          img='/4cj.webp'
+          title= 'The Greatest Outdoors'
+          description='Wishlist curated by Airbnb'
+          buttonText='Get Inspired'
+        />
       </main>
+
+      <Footer />
     </div>
   )
 }

@@ -15,7 +15,7 @@ const Header: FC<HeaderProps> = ({}) => {
         {/* Middle */}
         <div className='flex items-center md:border-2 rounded-full p-2 md:shadow-sm gap-2'>
             <input type="text" placeholder='Start your search' className='pl-2 bg-transparent outline-none flex-grow w-10 text-gray-600 placeholder-gray-400'/>
-            <MagnifyingGlassIcon className='min-w-min hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer hover:scale-105 transition-[scale]' />
+            <MagnifyingGlassIcon className='min-w-min hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer hover:scale-105 transition transform ease-out' />
         </div>
 
         {/* Right */}
