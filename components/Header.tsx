@@ -5,14 +5,18 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { DateRangePicker } from 'react-date-range';
 import { RangeKeyDict } from 'react-date-range';
+import { useRouter } from 'next/router';
 
-interface HeaderProps { }
+interface HeaderProps {
+  placeholder?: string;
+}
 
-const Header: FC<HeaderProps> = ({ }) => {
+const Header: FC<HeaderProps> = ({ placeholder }) => {
   const [searchInput, setSearchInput] = useState("")
   const [startDate, setStartDate] = useState(new Date())
   const [endDate, setEndDate] = useState(new Date())
   const [noOfGuests, setNoOfGuests] = useState(1)
+  const router = useRouter()
 
   const selectionRange = {
     startDate: startDate,
@@ -31,10 +35,22 @@ const Header: FC<HeaderProps> = ({ }) => {
     setSearchInput("")
   }
 
+  const search = () => {
+    router.push({
+      pathname: '/search',
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuests: noOfGuests
+      }
+    })
+  }
+
   return (
     <header className='sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5'>
       {/* Left */}
-      <div className='relative flex items-center h-10 cursor-pointer my-auto'>
+      <div onClick={() => router.push("/")} className='relative flex items-center h-10 cursor-pointer my-auto'>
         <Image src="/airbnb_logo.png" fill className='object-left object-contain' alt="Airbnb" sizes="50vw" />
       </div>
 
@@ -42,7 +58,7 @@ const Header: FC<HeaderProps> = ({ }) => {
       <div className='flex items-center md:border-2 rounded-full p-2 md:shadow-sm gap-2'>
         <input
           type="text"
-          placeholder='Start your search'
+          placeholder={placeholder || 'Start your search'}
           className='pl-2 bg-transparent outline-none flex-grow w-10 text-gray-600 placeholder-gray-400'
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
@@ -81,7 +97,7 @@ const Header: FC<HeaderProps> = ({ }) => {
           </div>
           <div className='flex'>
             <button onClick={resetInput} className='flex-grow text-gray-500'>Cancel</button>
-            <button className='flex-grow text-red-400'>Search</button>
+            <button className='flex-grow text-red-400' onClick={search}>Search</button>
           </div>
         </div>
       )}
