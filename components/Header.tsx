@@ -63,7 +63,7 @@ const Header: FC<HeaderProps> = ({ placeholder }) => {
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
         />
-        <MagnifyingGlassIcon className='min-w-min hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer hover:scale-105 transition transform ease-out' />
+        <MagnifyingGlassIcon className='w-8 hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer hover:scale-105 transition transform ease-out' />
       </div>
 
       {/* Right */}
