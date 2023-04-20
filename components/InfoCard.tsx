@@ -20,7 +20,7 @@ const InfoCard: FC<InfoCardProps> = ({ img, location, title, description, star, 
                 <Image 
                     src={img}
                     fill
-                    className='object-cover'
+                    className='object-cover rounded-2xl'
                     alt="image"
                 />
             </div>
