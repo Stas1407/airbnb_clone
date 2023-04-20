@@ -20,7 +20,7 @@ interface searchProps {
     }[];
 }
 
-const search: FC<searchProps> = ({ searchResults }) => {
+const Search: FC<searchProps> = ({ searchResults }) => {
     const router = useRouter();
 
     const { location, startDate, endDate, noOfGuests } = router.query;
@@ -69,7 +69,7 @@ const search: FC<searchProps> = ({ searchResults }) => {
     )
 }
 
-export default search
+export default Search
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(res => res.json())
